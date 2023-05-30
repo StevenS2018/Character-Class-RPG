@@ -22,6 +22,7 @@ public class Program
         Program program = new Program();
         int wallet = 0;
         int funds = program.Wallet(wallet);
+        Enemy enemy = new Enemy("Paradox Creature", 100.0f,20.0f, 15.5f, 75.5f);
 
 
         List<string> partyMembers = new List<string>()

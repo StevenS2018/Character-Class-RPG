@@ -8,74 +8,105 @@ namespace Practice
 {
     public class DarkPathHero
     {
+        private string _name;
+        private float _health;
+        private float _attack;
+        private float _damage;
+        private float _defense;
+        private float _speed;
+        private bool _isDead;
+
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+        public float Health
+        {
+            get { return _health; }
+
+            set { _health = value; }
+        }
+    
+        public float Attack
+        {
+            get { return _attack; }
+
+            set { _attack = value; }
+        }
+        public float Defense
+        {
+            get { return _defense; }
+
+            set { _defense = value; }
+        }
+        public float Speed
+        {
+            get { return _speed; }
+            set { _speed = value; }
+        }
+        public bool IsDead
+        {
+            get { return _isDead; } 
+        }
         public void PrintHeroDetails()
         {
-            DarkPathHero darkHero = new DarkPathHero();
-            string name = string.Empty;
-            darkHero.DarkPathHeroName($"Name of Dark Hero: {name}");
-            float health = 0.0f;
-            darkHero.DarkPathHeroHealthStats(health);
-            float attack = 0.0f;
-            darkHero.DarkPathHeroAttackStats(attack);
-            float defense = 0.0f;
-            darkHero.DarkPathHeroDefenseStats(defense);
-            float speed = 0.0f;
-            darkHero.DarkPathHeroSpeedStats(speed);
-            darkHero.DamageTaken(health, attack, defense);
-            bool isDead = false;
-            darkHero.Death(health, attack, defense, isDead);
+            DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0,0f);
+            Console.Write("Name of Hero: ");
+            darkHero.DarkPathHeroName();
+            darkHero.DarkPathHeroHealthStats();
+            darkHero.DarkPathHeroAttackStats();
+            darkHero.DarkPathHeroDefenseStats();
+            darkHero.DarkPathHeroSpeedStats();
+            darkHero.DamageTaken();
+            darkHero.Death();
           
 
 
 
 
         }
-        public string DarkPathHeroName(string name)
+        public string DarkPathHeroName()
         {
-            name = "Xenadu";
+           string name = "Xenadu";
             return name;
         }
-        public float DarkPathHeroHealthStats(float health)
+        public float DarkPathHeroHealthStats()
         {
-            health = 100.0f;
+            float health = 0.0f;
             return health;
         }
-        public float DarkPathHeroAttackStats(float attack)
+        public float DarkPathHeroAttackStats()
         {
-            attack = 85.0f;
+           float attack = 0.0f;
             return attack;
         }
-        public float DarkPathHeroDefenseStats(float defense)
+        public float DarkPathHeroDefenseStats()
         {
-            defense = 50.0f;
+           float defense = 0.0f;
             return defense;
         }
-        public float DarkPathHeroSpeedStats(float speed)
+        public float DarkPathHeroSpeedStats()
         {
-            speed = 90.0f;
+           float speed = 0.0f;
             return speed;
         }
-        public float DamageTaken(float health, float attack, float defense)
+        public float DamageTaken()
         {
-            DarkPathHero darkHero = new DarkPathHero();
+            DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
             Enemy enemy = new Enemy();
-            float damage = enemy.EnemyAttackStats(attack) / darkHero.DarkPathHeroDefenseStats(defense);
-            float remainingHp = darkHero.DarkPathHeroHealthStats(health) - damage;
+            float damage = enemy.EnemyAttackStats() / darkHero.DarkPathHeroDefenseStats();
+            float remainingHp = darkHero.DarkPathHeroHealthStats() - damage;
             return remainingHp;
 
 
         }
-        public bool Death(float health,float attack,  float defense, bool isDead)
+        public bool Death()
         {
-            DarkPathHero darkHero = new DarkPathHero();
-            float hp = darkHero.DarkPathHeroHealthStats(health);
-            health = hp;
-            float attck = darkHero.DarkPathHeroAttackStats(attack);
-            attack = attck;
-            float def = darkHero.DarkPathHeroDefenseStats(defense);
-            defense = def;
-            isDead = false;
-            if (darkHero.DamageTaken(health, attack, defense) == 0)
+            DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+            bool isDead = false;
+            if (darkHero.DamageTaken() == 0)
             {
                 isDead = true;
 
@@ -85,6 +116,15 @@ namespace Practice
                 isDead = false;
             }
             return isDead;
+        }
+        public DarkPathHero(string name, float health, float attack, float defense, float speed)
+        {
+            _name= name;
+            _health= health;
+            _attack= attack;
+            _defense= defense;
+            _speed = speed;
+           
         }
 
 

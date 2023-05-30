@@ -20,61 +20,59 @@ public class Xentaru : DarkPathHero
 		   float def = 0.0f;
 		   float spd = 0.0f;
            bool formDeath = false;
-           float health = darkHero.DarkPathHeroHealthStats(hp);
+           float health = darkHero.DarkPathHeroHealthStats();
           if (health == 0)
           {
             formDeath = true;
-            xentaru.FormDeath(health, formDeath);
+            xentaru.FormDeath();
 
           }
 
-          float attack = darkHero.DarkPathHeroAttackStats(atck);
-          float defense = darkHero.DarkPathHeroDefenseStats(def);
-          float speed = darkHero.DarkPathHeroSpeedStats(spd);
+          float attack = darkHero.DarkPathHeroAttackStats();
+          float defense = darkHero.DarkPathHeroDefenseStats();
+          float speed = darkHero.DarkPathHeroSpeedStats();
         
 
-          xentaru.DarkPathHeroHealthStats(health);
-          xentaru.AttackBoost(attack);
-          xentaru.DefenseNerf(defense);
-          xentaru.SpeedBoost(speed);
+          xentaru.DarkPathHeroHealthStats();
+          xentaru.AttackBoost();
+          xentaru.DefenseNerf();
+          xentaru.SpeedBoost();
 
      
      
         }
-    public float FormHealthStats(float health)
+    public float FormHealthStats()
     {
-        DarkPathHero darkHero = new DarkPathHero();
-        float hp = darkHero.DarkPathHeroHealthStats(health);
+        DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+        float hp = darkHero.DarkPathHeroHealthStats();
 
         return hp;
     }
-    public float AttackBoost(float attack)
+    public float AttackBoost()
     {
-        DarkPathHero darkHero = new DarkPathHero();
-        float attck = darkHero.DarkPathHeroAttackStats(attack);
-        attck = darkHero.DarkPathHeroAttackStats(attack * 2);
+        DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+        float attck = darkHero.DarkPathHeroAttackStats();
         return attck;
     }
-    public float DefenseNerf(float defense)
+    public float DefenseNerf()
     {
-        DarkPathHero darkHero = new DarkPathHero();
-        float def = darkHero.DarkPathHeroDefenseStats(defense);
-        def = darkHero.DarkPathHeroDefenseStats(defense / 2);
+        DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+        float def = darkHero.DarkPathHeroDefenseStats();
         return def;
     }
-    public float SpeedBoost(float speed)
+    public float SpeedBoost()
     {
-        DarkPathHero darkHero = new DarkPathHero();
-        float spd = darkHero.DarkPathHeroSpeedStats(speed);
-        speed = darkHero.DarkPathHeroSpeedStats(speed * 3);
+        DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+        float spd = darkHero.DarkPathHeroSpeedStats();
+       float speed = darkHero.DarkPathHeroSpeedStats();
         return spd;
     }
-    public bool FormDeath(float health, bool formDeath)
+    public bool FormDeath()
     {
-        DarkPathHero darkHero = new DarkPathHero();
-        float hp = darkHero.DarkPathHeroHealthStats(health);
-        formDeath = false;
-        if(darkHero.DarkPathHeroHealthStats(hp) == 0)
+        DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+        float hp = darkHero.DarkPathHeroHealthStats();
+       bool formDeath = false;
+        if(darkHero.DarkPathHeroHealthStats() == 0)
         {
 
             formDeath = true;

@@ -9,35 +9,73 @@ namespace Practice
 {
     public class Enemy
     {
+        private string _name;
+        private float _health;
+        private float _attack;
+        private float _damage;
+        private float _defense;
+        private float _speed;
+        private bool _isDead;
+
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+        public float Health {
+            get { return _health; } 
+
+            set { _health = value; }
+        }
+     
+        public float Attack
+        {
+            get { return _attack; }
+
+            set { _attack = value; }
+        }
+        public float Defense
+        {
+            get { return _defense; }
+
+            set { _defense = value; }
+        }
+        public float Speed
+        {
+            get { return _speed; }
+            set { _speed = value; }
+        }
+        public bool IsDead
+        {
+            get { return _isDead; }
+        }
+
+
+
+
         public static void PrintEnemyDetails()
         {
 
-            Enemy enemy = new Enemy();
-            int num1 = 0;
-            string name = string.Empty;
-            enemy.EnemyName($"Name of Enemy: {name}");
-            float health = 0.0f;
-            enemy.EnemyHealthStats(health);
-            float attack = 0.0f;
-            enemy.EnemyAttackStats(attack);
-            float defense = 0.0f;
-            enemy.EnemyDefenseStats(defense);
-            float speed = 0.0f;
-            enemy.EnemySpeedStats(speed);
-            float damage = enemy.DamageTaken(health, attack, defense);
-            bool isDead = false;
-            enemy.Death(health, attack, defense, isDead);
-            bool hitMissed = false;
-            if(enemy.HitLands(num1) == 5)
+            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0, 0f);
+
+            enemy.EnemyName();
+            enemy.EnemyHealthStats();
+            enemy.EnemyAttackStats();
+            enemy.EnemyDefenseStats();
+            enemy.EnemySpeedStats();
+            float damage = enemy.DamageTaken();
+            enemy.Death();
+            if(enemy.HitLands() == 5)
             {
-                enemy.HitMissed(hitMissed, health, attack, defense);
+                enemy.HitMissed();
             }
+            Console.WriteLine(damage);
             
         }
-        public int HitLands(int num1)
+        public int HitLands()
         {
             Random random = new Random();
-            num1 = random.Next(1, 10);
+            int num1 = random.Next(1, 10);
 
 
             return num1;
@@ -45,69 +83,66 @@ namespace Practice
 
         }
 
-        public float EnemyHealthStats(float health)
+        public float EnemyHealthStats()
         {
-            health = 100.0f;
+          float  health = 0.0f;
             return health;
         }
-        public string EnemyName(string name)
+        public string EnemyName()
         {
-            name = "Paradox Creature";
+          string  name = "";
             return name;
         }
-        public float EnemyAttackStats(float attack)
+        public float EnemyAttackStats()
         {
-            attack = 75.0f;
+           float  attack = 0.0f;
             return attack;
         }
-        public float EnemyDefenseStats(float defense)
+        public float EnemyDefenseStats()
         {
-            defense = 50.0f;
+           float  defense = 0.0f;
             return defense;
         }
-        public float EnemySpeedStats(float speed)
+        public float EnemySpeedStats()
         {
-            speed = 100.0f;
+            float speed = 0.0f;
             return speed;
         }
-        public float DamageTaken(float health, float attack, float defense)
+        public float DamageTaken()
         {
-            DarkPathHero darkPathHero = new DarkPathHero();
-            Enemy enemy = new Enemy();
-            float damage = darkPathHero.DarkPathHeroAttackStats(attack) / enemy.EnemyDefenseStats(defense);
-            float remainingHp = enemy.EnemyHealthStats(health) - damage;
+            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0, 0f);
+            float damage = darkPathHero.DarkPathHeroAttackStats() / enemy.EnemyDefenseStats();
+            float remainingHp = enemy.EnemyHealthStats() - damage;
             return remainingHp;
            
 
         }
 
-        public bool HitMissed(bool hitLanded, float health, float attack, float defense)
+        public bool HitMissed()
         {
-            Random random = new Random();
-            Enemy enemy = new Enemy();
-            Xentaru xentaru = new Xentaru();
-            int num1 = random.Next(1,10);
+            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0, 0f);
+            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
             bool didMiss = false;
-            xentaru.DamageTaken(health, attack, defense);
+            darkPathHero.DamageTaken();
             int hitMiss = 5;
-            if(enemy.HitLands(num1) == hitMiss) 
+            if(enemy.HitLands() == hitMiss) 
             {
                 didMiss = true;
             }
            
             return didMiss;
         }
-        public bool Death(float health, float attack, float defense, bool isDead)
+        public bool Death()
         {
-            Enemy enemy = new Enemy();
-            float hp = enemy.EnemyHealthStats(health);
-            health = hp;
-            float attck = enemy.EnemyAttackStats(attack);
-            attack = attck;
-            float def = enemy.EnemyDefenseStats(defense);
-            defense = def;
-            isDead = false;
-            if (enemy.DamageTaken(health, attack, defense) == 0)
+            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0, 0f);
+            float hp = enemy.EnemyHealthStats();
+            float attack = enemy.EnemyAttackStats();
+            float def = enemy.EnemyDefenseStats();
+    
+            bool isDead = false;
+
+            if (enemy.DamageTaken() == 0)
             {
                 isDead = true;
 
@@ -118,7 +153,15 @@ namespace Practice
             }
             return isDead;
         }
+        public Enemy(string name, float health,float attack, float defense, float speed)
+        {
+            _name = name;
+            _health = health;
+            _attack = attack;
+            _defense = defense;
+            _speed = speed;
 
+        }
 
 
     }

@@ -35,6 +35,10 @@ namespace Practice
 
             set { _attack = value; }
         }
+        public float Damage
+        {
+            get { return _damage; }
+        }
         public float Defense
         {
             get { return _defense; }
@@ -50,23 +54,7 @@ namespace Practice
         {
             get { return _isDead; } 
         }
-        public void PrintHeroDetails()
-        {
-            DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0,0f);
-            Console.Write("Name of Hero: ");
-            darkHero.DarkPathHeroName();
-            darkHero.DarkPathHeroHealthStats();
-            darkHero.DarkPathHeroAttackStats();
-            darkHero.DarkPathHeroDefenseStats();
-            darkHero.DarkPathHeroSpeedStats();
-            darkHero.DamageTaken();
-            darkHero.Death();
-          
-
-
-
-
-        }
+   
         public string DarkPathHeroName()
         {
            string name = "Xenadu";
@@ -80,6 +68,7 @@ namespace Practice
         public float DarkPathHeroAttackStats()
         {
            float attack = 0.0f;
+
             return attack;
         }
         public float DarkPathHeroDefenseStats()
@@ -94,8 +83,8 @@ namespace Practice
         }
         public float DamageTaken()
         {
-            DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
-            Enemy enemy = new Enemy();
+            DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0.0f, 0, 0f);
+            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0.0f, 0, 0f);
             float damage = enemy.EnemyAttackStats() / darkHero.DarkPathHeroDefenseStats();
             float remainingHp = darkHero.DarkPathHeroHealthStats() - damage;
             return remainingHp;
@@ -104,7 +93,7 @@ namespace Practice
         }
         public bool Death()
         {
-            DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+            DarkPathHero darkHero = new DarkPathHero("", 0.0f, 0.0f, 0.0f, 0.0f, 0f);
             bool isDead = false;
             if (darkHero.DamageTaken() == 0)
             {
@@ -117,11 +106,12 @@ namespace Practice
             }
             return isDead;
         }
-        public DarkPathHero(string name, float health, float attack, float defense, float speed)
+        public DarkPathHero(string name, float health, float attack, float damage, float defense, float speed)
         {
             _name= name;
             _health= health;
             _attack= attack;
+            _damage = Damage;
             _defense= defense;
             _speed = speed;
            

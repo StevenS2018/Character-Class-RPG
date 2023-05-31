@@ -34,6 +34,10 @@ namespace Practice
 
             set { _attack = value; }
         }
+        public float Damage
+        {
+            get { return _damage; }
+        }
         public float Defense
         {
             get { return _defense; }
@@ -56,7 +60,7 @@ namespace Practice
         public static void PrintEnemyDetails()
         {
 
-            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0, 0f);
+            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0.0f, 0, 0f);
 
             enemy.EnemyName();
             enemy.EnemyHealthStats();
@@ -110,8 +114,8 @@ namespace Practice
         }
         public float DamageTaken()
         {
-            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
-            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0, 0f);
+            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0.0f, 0, 0f);
+            Enemy enemy = new Enemy("", 0.0f,0.0f, 0.0f, 0, 0f);
             float damage = darkPathHero.DarkPathHeroAttackStats() / enemy.EnemyDefenseStats();
             float remainingHp = enemy.EnemyHealthStats() - damage;
             return remainingHp;
@@ -121,8 +125,8 @@ namespace Practice
 
         public bool HitMissed()
         {
-            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0, 0f);
-            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0, 0f);
+            Enemy enemy = new Enemy("", 0.0f,0.0f, 0.0f, 0, 0f);
+            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
             bool didMiss = false;
             darkPathHero.DamageTaken();
             int hitMiss = 5;
@@ -135,7 +139,7 @@ namespace Practice
         }
         public bool Death()
         {
-            Enemy enemy = new Enemy("", 0.0f, 0.0f, 0, 0f);
+            Enemy enemy = new Enemy("", 0.0f,0.0f, 0.0f, 0, 0f);
             float hp = enemy.EnemyHealthStats();
             float attack = enemy.EnemyAttackStats();
             float def = enemy.EnemyDefenseStats();
@@ -153,11 +157,12 @@ namespace Practice
             }
             return isDead;
         }
-        public Enemy(string name, float health,float attack, float defense, float speed)
+        public Enemy(string name, float health,float attack, float damage, float defense, float speed)
         {
             _name = name;
             _health = health;
             _attack = attack;
+            _damage = damage;
             _defense = defense;
             _speed = speed;
 

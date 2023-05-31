@@ -7,14 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 public class Program
-{
-    public static void Main(string[] args)
+{  public static void Main(string[] args)
     {
         Program program = new Program();
         int wallet = 0;
         int funds = program.Wallet(wallet);
-        DarkPathHero darkHero = new DarkPathHero("Xenadu", 100.0f, 30.0f,0.0f, 15.5f, 75.5f);
-        Enemy enemy = new Enemy("Paradox Creature", 30.0f,20.0f,0.0f, 15.5f, 35.5f);
+        DarkPathHero darkHero = new DarkPathHero("Xenadu", 100.0f, 30.0f, 0.0f, 40.5f, 75.5f, false);
+        Enemy enemy = new Enemy("Paradox Creature", 30.0f,50.0f,0.0f, 15.5f, 35.5f);
         Console.Write("Name of Hero: ");
         string name = darkHero.DarkPathHeroName();
         name = darkHero.Name;
@@ -34,17 +33,30 @@ public class Program
         Console.WriteLine($"{name}'s Speed Stats: {speed}");
         float enemyAttack = enemy.EnemyAttackStats();
         enemyAttack = enemy.Attack;
-        float heroDamage = darkHero.DamageTaken();
+        float heroDamage = darkHero.HpDamageTaken();
         heroDamage = darkHero.Damage;
-        heroDamage = defense / enemyAttack;
-       
-        health -= heroDamage;
+        heroDamage = enemyAttack / defense;
+
+       health -= heroDamage;
+        float death = 0.0f;
+        
+        Console.WriteLine();
         Console.WriteLine($"Damage taken: {heroDamage}");
         Console.WriteLine($"Remaining HP: {health}");
 
+        bool isDead = darkHero.Death();
+         isDead = darkHero.IsDead;
+        if(health <= death)
+        {
+            isDead = true;
+            Console.WriteLine(isDead);
 
-        bool isDead = darkHero.IsDead;
-        Console.WriteLine(isDead);
+        }
+        else
+        {
+            isDead = false;
+            Console.WriteLine(isDead);
+        }
 
 
 

@@ -114,7 +114,7 @@ namespace Practice
         }
         public float DamageTaken()
         {
-            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0.0f, 0, 0f);
+            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0.0f, 0, 0f, false);
             Enemy enemy = new Enemy("", 0.0f,0.0f, 0.0f, 0, 0f);
             float damage = darkPathHero.DarkPathHeroAttackStats() / enemy.EnemyDefenseStats();
             float remainingHp = enemy.EnemyHealthStats() - damage;
@@ -126,9 +126,9 @@ namespace Practice
         public bool HitMissed()
         {
             Enemy enemy = new Enemy("", 0.0f,0.0f, 0.0f, 0, 0f);
-            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+            DarkPathHero darkPathHero = new DarkPathHero("", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false);
             bool didMiss = false;
-            darkPathHero.DamageTaken();
+            darkPathHero.HpDamageTaken();
             int hitMiss = 5;
             if(enemy.HitLands() == hitMiss) 
             {
